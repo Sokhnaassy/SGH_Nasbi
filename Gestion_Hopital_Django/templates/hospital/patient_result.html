@@ -1,0 +1,140 @@
+
+{% extends 'hospital/patient_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+    .cont{
+        display:flex;
+        flex-direction: inline;
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 10px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
+
+    .input-group label {
+        width: 100%;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+    <div class="cont">
+    <div style="width: 50%;margin: 40px;">
+        <h2>Mes résultats</h2>
+        <ul>
+            <li>Par rapport à la toux :
+                <ol>
+                    <li>Ordonnance via l'app : {{pviat}}%</li>
+                    <li>Prendre RV : {{psrt}}%</li>
+                    <li>Faire un bilan : {{bt}}%</li>
+                    <li>Faire un test : {{tt}}%</li>
+                    <li>Faire un scan : {{st}}%</li>
+                </ol>
+            </li>
+            <li>
+                Par rapport aux douleurs musculaires :
+                <ol>
+                    <li>Ordonnance via l'app : {{pviap}}%</li>
+                    <li>Prendre RV : {{psrp}}%</li>
+                    <li>Faire un bilan : {{bp}}%</li>
+                    <li>Faire un test : {{tp}}%</li>
+                    <li>Faire un scan : {{sp}}%</li>
+                </ol>
+            </li>
+            <li>
+                Par rapport à l'appetit :
+                <ol>
+                    <li>Ordonnance via l'app : {{pviao}}%</li>
+                    <li>Prendre RV : {{psro}}%</li>
+                    <li>Faire un bilan : {{bo}}%</li>
+                    <li>Faire un test : {{to}}%</li>
+                    <li>Faire un scan : {{so}}%</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+    <div style="width: 50%;margin: 40px;">
+        <h2>Mes données</h2>
+        <ul>
+            <li>Sur un echelle de 0 à 100 vous avez choisi {{toux }} comme degré pour la toux</li>
+            <li>Sur un echelle de 0 à 30 vous avez choisi {{douleur_musculaire }} comme degré pour la douleur musculaire</li>
+            <li>Sur un echelle de 0 à 6 vous avez choisi {{appetit }} comme nombre de dégustation</li>
+        
+        </ul>
+        <h2>Mes taux d'appartenance</h2>
+<ul>
+    <li> Au groupe atteinte de grippe faible : {{grippe_faible}}%</li>
+    <li> Au groupe atteinte de rhume : {{rhume}}%</li>
+    <li> Au groupe atteinte de grippe fort :  {{grippe_fort}}%</li> 
+
+    <li> Au groupe atteinte d'un leger palu : {{palu_leger}}%</li>
+    <li> Au groupe atteinte moyennement de palu : {{palu_moyen}}%</li>
+    <li> Au groupe atteinte d'un fort palu :  {{palu_fort}}%</li>
+    
+    <li> Au groupe non atteinte de perte d'appetit  : {{sans_perte}}%</li>
+    <li> Au groupe atteinte moyennement de perte d'appetit : {{perte_moyenne}}%</li>
+    <li> Au groupe atteinte d'une perte totale d'appetit :  {{perte_totale}}%</li> 
+</ul>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.input-group input[type="range"]').on('input', function() {
+            var $set = $(this).val();
+            $(this).siblings('.output').text($set);
+        });
+    });
+</script>
+{% if consu %}
+<img src="data:image/png;base64,{{consu|safe}}" alt="Consultation Image">
+{% endif %}
+
+{% endblock content %}

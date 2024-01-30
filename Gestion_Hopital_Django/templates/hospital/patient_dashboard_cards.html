@@ -1,0 +1,55 @@
+
+  <style>
+    .card-container {
+      margin:40px;
+      margin-bottom: 200px;
+    display: flex;
+    gap: 20px;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    </head>
+    <body>
+      <div class="card-container"> 
+    <table>
+      <tr>
+        <td>Nom du docteur</td>
+        <td>Symptomes</td>
+        <td>Numéro du Docteur</td>
+        <td>Adresse du docteur</td>
+        <td>Département du docteur</td>
+        <td>Date d'admission</td>
+      </tr>
+      <tr>
+        <td>{{doctorName}}</td>
+        <td>{{symptoms}}</td>
+        <td>{{doctorMobile}}</td>
+        <td>{{doctorAddress}}</td>
+        <td>{{doctorDepartment}}</td>
+        <td>{{admitDate}}</td>
+      </tr>
+    </table>
+
+  </div> 
+
+
+
+  
+
